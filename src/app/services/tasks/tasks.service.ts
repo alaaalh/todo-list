@@ -6,9 +6,9 @@ import { ApiService } from '../api/api.service';
 })
 export class TasksService {
 
-  constructor(private api: ApiService) { }
+  constructor(private _api: ApiService) { }
 
   get(){
-    return this.api.get(`/task/get`)
+    return this._api.get(`task/get`)
   }
 }

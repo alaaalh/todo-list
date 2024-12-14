@@ -1,19 +1,62 @@
-<mat-grid-list cols="10" rowHeight="2:1">
-    <mat-grid-tile colspan="10">
-        <mat-form-field class="example-full-width">
-            <mat-label>Title</mat-label>
-            <input matInput #inputTitle>
-        </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="10">
-        <mat-form-field class="example-full-width">
-            <mat-label>Description</mat-label>
-            <input matInput #inputDescription>
-        </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="10">
-        <!-- <button mat-flat-button (click)="addTask(inputTitle.value, inputDescription.value)">Basic</button> -->
-    </mat-grid-tile>
-</mat-grid-list>
+<div>
+    <mat-grid-list cols="10" rowHeight="2:1">
+        <mat-grid-tile colspan="10">
+            <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input matInput #inputTitle>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="10">
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <input matInput #inputDescription>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="10">
+            <button mat-flat-button (click)="addTask(inputTitle.value, inputDescription.value)">Basic</button>
+        </mat-grid-tile>
+    </mat-grid-list>
 
-<button mat-flat-button>checked</button>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <table style="width: 50%; text-align: center;" border="1px solid">
+            <thead>
+                <th>#</th>
+                <th>Title</th>
+                <th>Statue</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                @for (item of tasks; track item.ID; let index=$index; let count=$count; let first=$first; let
+                even=$even; let last=$last) {
+                @if(first){
+                <p>first item</p>
+                }
+
+                @if(even){
+                <tr style="background-color: gray;">
+                    <td>{{index + 1}} / count{{count}}</td>
+                    <td>{{ item.Title }}</td>
+                    <td><input type="checkbox" [checked]="item.IsDone"></td>
+                    <td><button mat-button (click)="deleteTask(item.ID)">Delete</button></td>
+                </tr>
+                }@else{
+                <tr>
+                    <td>{{index + 1}} / count{{count}}</td>
+                    <td>{{ item.Title }}</td>
+                    <td><input type="checkbox" [checked]="item.IsDone"></td>
+                    <td><button mat-button (click)="deleteTask(item.ID)">Delete</button></td>
+                </tr>
+                }
+
+                @if(last){
+                    <p>table footer</p>
+                }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <div *for="let item of tasks;">
+    <h2>{{ item }}</h2>
+    <p>{{ item.description }}</p>
+</div> -->

@@ -21,14 +21,19 @@ export class CreateTaskComponent {
 
   ngOnInit(): void{
     this.taskService.get().subscribe((res: APIResponse): void => {
-      console.log('res',res)
+      this.tasks = res.Data
+      console.log('res',this.tasks)
     })
   }
 
-  addTask(title: string, description: string) : void {
-    let task = new Task(title, description)
-    this.tasks.push(task)
+  addTask(Title: string, description: string) : void {
+    // let task = new Task(Title, description)
+    // this.tasks.push(task)
 
     console.log(this.tasks)
+  }
+
+  deleteTask(id: number){
+
   }
 }

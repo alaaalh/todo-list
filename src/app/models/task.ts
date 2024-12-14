@@ -1,11 +1,11 @@
 export class Task{
-    title: string;
-    description: string;
-    status: boolean
+    ID: number;
+    Title: string;
+    IsDone: boolean
 
-    constructor(title: string, description: string, status: boolean = false){
-        this.title = title;
-        this.description = description;
-        this.status = status
+    constructor(ID: number, Title: string, IsDone: boolean = false){
+        this.ID = ID
+        this.Title = Title;
+        this.IsDone = IsDone
     }
 }

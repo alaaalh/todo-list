@@ -1,10 +1,3 @@
-interface data {
-    CreatedDate: string,
-    ID: number,
-    IsDone: boolean,
-    Title: string
-}
-
 export class APIResponse{
     Data: any;
     Message: string;
