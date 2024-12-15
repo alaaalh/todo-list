@@ -4,11 +4,13 @@ import { Task } from '../models/task';
 import { MaterialModule } from '../material/material.module';
 import { HttpClient } from '@angular/common/http';
 import { APIResponse } from '../models/api-response';
+import { CurrencyPipe} from '@angular/common';
+import { KapapCasePipe } from '../pips/kapap-case.pipe';
 
 
 @Component({
   selector: 'app-create-task',
-  imports: [MaterialModule],
+  imports: [MaterialModule, CurrencyPipe, KapapCasePipe],
   templateUrl: './create-task.component.html',
   styleUrl: './create-task.component.scss'
 })

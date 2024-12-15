@@ -14,7 +14,10 @@
         </mat-grid-tile>
         <mat-grid-tile colspan="10">
             <button mat-flat-button (click)="addTask(inputTitle.value, inputDescription.value)">Basic</button>
+            <span>{{1111223443 | currency: 'EGP'}}</span>
+            <div>{{'testtttt' | kapapCase}}</div>
         </mat-grid-tile>
+
     </mat-grid-list>
 
     <div style="width: 100%; display: flex; justify-content: center;">
@@ -49,7 +52,7 @@
                 }
 
                 @if(last){
-                    <p>table footer</p>
+                <p>table footer</p>
                 }
                 }
             </tbody>
