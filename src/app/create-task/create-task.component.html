@@ -14,10 +14,12 @@
         </mat-grid-tile>
         <mat-grid-tile colspan="10">
             <button mat-flat-button (click)="addTask(inputTitle.value, inputDescription.value)">Basic</button>
-            <span>{{1111223443 | currency: 'EGP'}}</span>
-            <div>{{'testtttt' | kapapCase}}</div>
         </mat-grid-tile>
-
+        <span>{{1111223443 | currency: 'EGP'}}</span>
+        <div>{{'testtttt' | kapapCase}}</div>
+        <div>{{ count() }}</div>
+        <button mat-flat-button (click)="increment()">increment</button>
+        
     </mat-grid-list>
 
     <div style="width: 100%; display: flex; justify-content: center;">

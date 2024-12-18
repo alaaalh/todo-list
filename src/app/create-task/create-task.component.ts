@@ -1,11 +1,12 @@
 import { TasksService } from './../services/tasks/tasks.service';
-import { Component } from '@angular/core';
+import { Component, WritableSignal } from '@angular/core';
 import { Task } from '../models/task';
 import { MaterialModule } from '../material/material.module';
 import { HttpClient } from '@angular/common/http';
 import { APIResponse } from '../models/api-response';
 import { CurrencyPipe} from '@angular/common';
 import { KapapCasePipe } from '../pips/kapap-case.pipe';
+import { signal } from '@angular/core';
 
 
 @Component({
@@ -18,6 +19,12 @@ import { KapapCasePipe } from '../pips/kapap-case.pipe';
 
 export class CreateTaskComponent {
   tasks: Task[] = []
+
+  count = signal(1)
+
+  increment() : void{
+    this.count.set(this.count() + 1)
+  }
 
   constructor(private taskService: TasksService){}
 
