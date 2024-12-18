@@ -1,10 +1,11 @@
+
 import { TasksService } from './../services/tasks/tasks.service';
-import { Component, WritableSignal } from '@angular/core';
+import { Component, computed, Signal, WritableSignal, effect } from '@angular/core';
 import { Task } from '../models/task';
 import { MaterialModule } from '../material/material.module';
 import { HttpClient } from '@angular/common/http';
 import { APIResponse } from '../models/api-response';
-import { CurrencyPipe} from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { KapapCasePipe } from '../pips/kapap-case.pipe';
 import { signal } from '@angular/core';
 
@@ -20,29 +21,43 @@ import { signal } from '@angular/core';
 export class CreateTaskComponent {
   tasks: Task[] = []
 
-  count = signal(1)
+  constructor(private taskService: TasksService) {
+    effect(() => {
+      console.log(`The current count is: ${this.count()}`);
+    });
+   }
 
-  increment() : void{
-    this.count.set(this.count() + 1)
-  }
+  ngOnInit(): void {
 
-  constructor(private taskService: TasksService){}
-
-  ngOnInit(): void{
     this.taskService.get().subscribe((res: APIResponse): void => {
       this.tasks = res.Data
-      console.log('res',this.tasks)
     })
   }
 
-  addTask(Title: string, description: string) : void {
+  addTask(Title: string, description: string): void {
     // let task = new Task(Title, description)
     // this.tasks.push(task)
 
-    console.log(this.tasks)
+    // console.log(this.tasks)
   }
 
-  deleteTask(id: number){
+  deleteTask(id: number) {
 
   }
+
+
+  // ==================================== signals =================================
+  count = signal(1)
+
+  increment(): void {
+    this.count.set(this.count() + 1)
+  }
+
+
+  // computed signal
+
+  counter: WritableSignal<number> = signal(0)
+  doubleCounter: Signal<number> = computed(() => this.counter() * 2)
+
+
 }
