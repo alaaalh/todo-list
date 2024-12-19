@@ -49,6 +49,14 @@ export class CreateTaskComponent {
   // ==================================== signals =================================
   count = signal(1)
 
+  returnCount = computed(() => {
+    if(this.count() > 1){
+      return`count, ${this.count()}`
+    }else{
+      return 'wrong'
+    }
+  })
+
   increment(): void {
     this.count.set(this.count() + 1)
   }
