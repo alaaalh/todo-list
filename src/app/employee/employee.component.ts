@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CreateTaskComponent } from '../create-task/create-task.component';
 
@@ -9,5 +9,11 @@ import { CreateTaskComponent } from '../create-task/create-task.component';
   styleUrl: './employee.component.scss'
 })
 export class EmployeeComponent {
-  value = input(0)
+  value = input<number>(0)
+
+  inputRequire = input.required<string>()
+
+  handleSaveTask() {
+    console.log('title')
+  }
 }

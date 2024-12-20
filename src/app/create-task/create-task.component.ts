@@ -1,6 +1,6 @@
 
 import { TasksService } from './../services/tasks/tasks.service';
-import { Component, computed, Signal, WritableSignal, effect } from '@angular/core';
+import { Component, computed, Signal, WritableSignal, effect, output } from '@angular/core';
 import { Task } from '../models/task';
 import { MaterialModule } from '../material/material.module';
 import { HttpClient } from '@angular/common/http';
@@ -33,12 +33,17 @@ export class CreateTaskComponent {
       this.tasks = res.Data
     })
   }
-
+  
+  eventEmitter = output<void>()
+  
   addTask(Title: string, description: string): void {
     // let task = new Task(Title, description)
     // this.tasks.push(task)
 
     // console.log(this.tasks)
+
+    this.eventEmitter.emit()
+
   }
 
   deleteTask(id: number) {
